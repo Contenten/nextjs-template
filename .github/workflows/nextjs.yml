@@ -67,8 +67,6 @@ jobs:
         run: pnpm install
       - name: Build Registry
         run: pnpm run build:registry
-      - name: Build Docs
-        run: pnpm run build:docs
       - name: Build with Next.js
         run: pnpm run build
         env:
