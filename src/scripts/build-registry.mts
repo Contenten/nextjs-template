@@ -67,7 +67,7 @@ async function syncStyles() {
 
     const resolveFiles = item.files?.map(
       (file) =>
-        `src/registry/${sourceStyle}/${typeof file === "string" ? file : file.path}`
+        `registry/${sourceStyle}/${typeof file === "string" ? file : file.path}`
     )
     if (!resolveFiles) {
       continue
@@ -117,7 +117,7 @@ export const Index: Record<string, any> = {
     for (const item of registry.items) {
       const resolveFiles = item.files?.map(
         (file) =>
-          `./src/registry/${style.name}/${
+          `registry/${style.name}/${
             typeof file === "string" ? file : file.path
           }`
       )
@@ -185,7 +185,7 @@ export const Index: Record<string, any> = {
         })
 
         // Write the source file for blocks only.
-        sourceFilename = `src/__registry__/${style.name}/${type}/${item.name}.tsx`
+        sourceFilename = `__registry__/${style.name}/${type}/${item.name}.tsx`
 
         if (item.files) {
           const files = item.files.map((file) =>
@@ -194,7 +194,7 @@ export const Index: Record<string, any> = {
               : file
           )
           if (files?.length) {
-            sourceFilename = `src/__registry__/${style.name}/${files[0].path}`
+            sourceFilename = `__registry__/${style.name}/${files[0].path}`
           }
         }
 
