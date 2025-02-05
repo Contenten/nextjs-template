@@ -20,6 +20,8 @@ import { iconLibraries, icons } from "../registry/registry-icons"
 import { styles } from "../registry/registry-styles"
 import { fixImport } from "./fix-import.mts"
 
+const BASE_DIR = path.join(process.cwd(), "src");
+const FILE_ROOT = path.join(BASE_DIR, "registry");
 const REGISTRY_PATH = path.join(process.cwd(), "public/r")
 
 const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
@@ -73,11 +75,11 @@ async function syncStyles() {
 
     // Copy files to target style if they don't exist.
     for (const file of resolveFiles) {
-      const sourcePath = path.join(process.cwd(), file)
+      const sourcePath = path.join(BASE_DIR, file);
       const targetPath = path.join(
-        process.cwd(),
-        file.replace(sourceStyle, targetStyle)
-      )
+        BASE_DIR,
+        file.replace(sourceStyle, targetStyle),
+      );
 
       if (!existsSync(targetPath)) {
         // Create directory if it doesn't exist.
@@ -196,7 +198,7 @@ export const Index: Record<string, any> = {
           }
         }
 
-        const sourcePath = path.join(process.cwd(), sourceFilename)
+        const sourcePath = path.join(BASE_DIR, sourceFilename);
         if (!existsSync(sourcePath)) {
           await fs.mkdir(sourcePath, { recursive: true })
         }
@@ -283,9 +285,9 @@ export const Index: Record<string, any> = {
   )
 
   // Write style index.
-  rimraf.sync(path.join(process.cwd(), "src/__registry__/index.tsx"))
-  fs.mkdir(path.join(process.cwd(), "src/__registry__"), { recursive: true })
-  await fs.writeFile(path.join(process.cwd(), "src/__registry__/index.tsx"), index)
+  rimraf.sync(path.join(BASE_DIR, "__registry__/index.tsx"));
+  fs.mkdir(path.join(BASE_DIR, "__registry__/"), { recursive: true });
+  await fs.writeFile(path.join(BASE_DIR, "__registry__/index.tsx"), index);
 }
 
 // ----------------------------------------------------------------------------
@@ -322,7 +324,7 @@ async function buildStyles(registry: Registry) {
             let content: string
             try {
               content = await fs.readFile(
-                path.join(process.cwd(), "registry", style.name, file.path),
+                path.join(BASE_DIR, "registry", style.name, file.path),
                 "utf8"
               )
 
@@ -791,13 +793,12 @@ export const Icons = {
 `
 
   // Write style index.
-  rimraf.sync(path.join(process.cwd(), "src/__registry__/icons.tsx"))
-  fs.mkdir(path.join(process.cwd(), "src/__registry__"), { recursive: true })
+  rimraf.sync(path.join(BASE_DIR, "__registry__/icons.tsx"));
   await fs.writeFile(
-    path.join(process.cwd(), "src/__registry__/icons.tsx"),
+    path.join(BASE_DIR, "__registry__/icons.tsx"),
     index,
-    "utf8"
-  )
+    "utf8",
+  );
 }
 
 try {
