@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { editInV0 } from "@/actions/edit-in-v0"
+// import { editInV0 } from "@/actions/edit-in-v0"
 import { Loader2 } from "lucide-react"
 import { useFormStatus } from "react-dom"
-import { toast } from "sonner"
+// import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
 import { Button, ButtonProps } from "@/registry/new-york/ui/button"
@@ -65,31 +65,31 @@ export function V0Button({
   return (
     <form
       action={async () => {
-        try {
-          const result = await editInV0({
-            name,
-            url,
-          })
+        // try {
+        //   const result = await editInV0({
+        //     name,
+        //     url,
+        //   })
 
-          if (result?.error) {
-            throw new Error(result.error)
-          }
+        //   if (result?.error) {
+        //     throw new Error(result.error)
+        //   }
 
-          if (result?.url) {
-            const popupOpened = window.open(result.url, "_blank")
-            if (!popupOpened) {
-              toast.warning("Pop-up window blocked.", {
-                description:
-                  "Click the pop-up button in your browser to continue.",
-                duration: 5000,
-              })
-            }
-          }
-        } catch (error) {
-          if (error instanceof Error) {
-            toast.error(error.message)
-          }
-        }
+        //   if (result?.url) {
+        //     const popupOpened = window.open(result.url, "_blank")
+        //     if (!popupOpened) {
+        //       toast.warning("Pop-up window blocked.", {
+        //         description:
+        //           "Click the pop-up button in your browser to continue.",
+        //         duration: 5000,
+        //       })
+        //     }
+        //   }
+        // } catch (error) {
+        //   if (error instanceof Error) {
+        //     toast.error(error.message)
+        //   }
+        // }
       }}
     >
       <Form size={size} className={className} disabled={disabled} {...props} />

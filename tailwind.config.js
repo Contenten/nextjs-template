@@ -3,7 +3,7 @@ const { fontFamily } = require("tailwindcss/defaultTheme")
 
 export default {
   darkMode: ["class"],
-  content: ["src/app/**/*.{ts,tsx}", "src/components/**/*.{ts,tsx}"],
+  content: ["src/app/**/*.{ts,tsx}", "src/components/**/*.{ts,tsx}", "content/**.mdx"],
   theme: {
     extend: {
       fontFamily: {
@@ -83,4 +83,4 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+}
