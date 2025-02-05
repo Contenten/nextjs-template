@@ -192,7 +192,7 @@ export const Index: Record<string, any> = {
               : file
           )
           if (files?.length) {
-            sourceFilename = `__registry__/${style.name}/${files[0].path}`
+            sourceFilename = `src/__registry__/${style.name}/${files[0].path}`
           }
         }
 

@@ -27,7 +27,7 @@ import {
 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/my-icons"
 import {
   Avatar,
   AvatarFallback,

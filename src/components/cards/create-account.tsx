@@ -1,6 +1,6 @@
 "use client"
 
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/my-icons"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
