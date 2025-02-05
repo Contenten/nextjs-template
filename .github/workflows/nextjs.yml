@@ -53,6 +53,13 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: Setup pnpm
+        # You may pin to the exact commit or the version.
+        # uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2
+        uses: pnpm/action-setup@v4.0.0
+        with:
+          # Version of pnpm to install
+          version: 9.15.2 # optional
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
