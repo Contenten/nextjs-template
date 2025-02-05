@@ -1,5 +1,5 @@
 import { createContentlayerPlugin } from "next-contentlayer2"
-
+import pkg from './package.json' with { type: "json" };
 const nextConfig = resolveConfig(process.env.PLATFORM)
 
 /**
